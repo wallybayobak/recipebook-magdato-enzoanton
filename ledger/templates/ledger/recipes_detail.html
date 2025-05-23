@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block content %}
+  <h2>{{ object.name }}</h2>
+  <ul>
+    {% for ri in object.ingredients.all %}
+      {% if ri.ingredient %}
+        <li>{{ ri.quantity }} of {{ ri.ingredient.name }}</li>
+      {% else %}
+        <li>{{ ri.quantity }} of [deleted ingredient]</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <p><a href="{% url 'ledger:recipes-list' %}">← Back to Recipe List</a></p>
+{% endblock %}

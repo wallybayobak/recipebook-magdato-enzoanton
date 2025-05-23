@@ -1,10 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
+from .models import Recipe
 # Create your views here.
 
 def index(request):
 	return HttpResponse('From index view')
 
+class RecipeListView(ListView):
+    model = Recipe
+    template_name = 'ledger/recipes_list.html'
+    context_object_name = 'recipes'
+
+class RecipeDetailView(DetailView):
+    model = Recipe
+    template_name = 'ledger/recipes_detail.html'
+    context_object_name = 'recipe'
+    '''
 def recipes_list(request):
 	ctx = {
     "recipes": [
@@ -138,4 +150,4 @@ def recipe2(request):
     		"link": "/recipe/2"
 		}
 	return render(request, "ledger/recipe_2.html", ctx)
-	
+	'''
