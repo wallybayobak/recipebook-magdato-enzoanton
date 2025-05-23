@@ -4,6 +4,14 @@
 
 {% block content %}
   <h2>{{ object.name }}</h2>
+  <p><strong>By</strong> {{ object.author.username }}</p>
+  <p>
+    <small>
+      Created on {{ object.created_on }}<br>
+      Last updated {{ object.updated_on }}
+    </small>
+  </p>
+
   <ul>
     {% for ri in object.ingredients.all %}
       {% if ri.ingredient %}

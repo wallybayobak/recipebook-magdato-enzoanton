@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
 # Create your views here.
 
@@ -12,9 +13,11 @@ class RecipeListView(ListView):
     template_name = 'ledger/recipes_list.html'
     context_object_name = 'recipes'
 
-class RecipeDetailView(DetailView):
+class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'ledger/recipes_detail.html'
+    login_url = 'login'
+    redirect_field_name = None
     context_object_name = 'recipe'
     '''
 def recipes_list(request):
