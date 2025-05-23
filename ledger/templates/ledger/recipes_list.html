@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}All Recipes{% endblock %}
+
+{% block content %}
+  <ul>
+    {% for recipe in recipes %}
+      <li>
+        <strong>{{ recipe.name }}</strong> —
+        <a href="{{ recipe.link }}">View recipe</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
