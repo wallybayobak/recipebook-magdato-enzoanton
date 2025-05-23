@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from .models import Recipe
+from .models import Recipe, RecipeImage
 from .forms import RecipeForm, RecipeImageForm
 # Create your views here.
 
@@ -25,7 +25,7 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
-    template_name = 'ledger/recipe_add.html'
+    template_name = 'ledger/recipes_add.html'
     form_class = RecipeForm
     success_url = reverse_lazy('ledger:recipe-list')
 
@@ -40,7 +40,7 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
 
 class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     model = RecipeImage
-    template_name = 'ledger/recipe_addimage.html'
+    template_name = 'ledger/recipes_addimage.html'
     form_class = RecipeImageForm
 
     def get_context_data(self, **kwargs):

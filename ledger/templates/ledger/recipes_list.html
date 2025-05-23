@@ -3,6 +3,10 @@
 {% block title %}Recipe List{% endblock %}
 
 {% block content %}
+  {% if request.user.is_authenticated %}
+    <h3>Welcome, {{ request.user.username }}</h3>
+    <p><a href="{% url 'ledger:recipe-add' %}"><strong>Create Recipe Here!</strong></a></p>
+  {% endif %}
   <h1>All Recipes</h1>
   <ul>
     {% for recipe in object_list %}

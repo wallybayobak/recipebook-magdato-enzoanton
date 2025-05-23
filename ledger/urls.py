@@ -3,7 +3,7 @@ from .views import index, RecipeListView, RecipeDetailView, RecipeCreateView, Re
 
 urlpatterns = [
 		path('', index, name='index'),
-		path('recipes/list/', RecipeListView.as_view(), name='recipes-list'),
+		path('recipes/list/', RecipeListView.as_view(), name='recipe-list'),
     	path('recipe/<int:pk>/', RecipeDetailView.as_view(), name='recipe-detail'),
     	path('recipes/add/', RecipeCreateView.as_view(), name='recipe-add'),
     	path('recipes/<int:pk>/add_image/', RecipeImageCreateView.as_view(), name='recipe-add-image'),

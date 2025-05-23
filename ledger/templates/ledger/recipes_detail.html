@@ -12,6 +12,7 @@
     </small>
   </p>
 
+  <h3>Ingredients</h3>
   <ul>
     {% for ri in object.ingredients.all %}
       {% if ri.ingredient %}
@@ -22,5 +23,22 @@
     {% endfor %}
   </ul>
 
-  <p><a href="{% url 'ledger:recipes-list' %}">← Back to Recipe List</a></p>
+  <h3>Images</h3>
+  {% if object.images.all %}
+    {% for img in object.images.all %}
+      <img src="{{ img.image.url }}" alt="{{ img.description }}">
+    {% endfor %}
+  {% else %}
+    <p>No images for this recipe yet.</p>
+  {% endif %}
+
+  <p>
+    <a href="{% url 'ledger:recipe-add-image' pk=object.pk %}">
+      Upload an image for this recipe
+    </a>
+  </p>
+
+  <p>
+    <a href="{% url 'ledger:recipe-list' %}">← Back to Recipe List</a>
+  </p>
 {% endblock %}
